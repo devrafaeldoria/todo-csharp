@@ -1,4 +1,5 @@
 ﻿using Todo.Screens;
+using ToDo.Screens.ToDoScreens;
 using ToDo.Screens.UserScreens;
 
 namespace ToDo
@@ -7,6 +8,7 @@ namespace ToDo
     {
         static void Main(string[] args)
         {
+            var Login = new Login();
             int choice = 0;
 
             do
@@ -25,14 +27,26 @@ namespace ToDo
                         UserScreen.MatchEmailAndPassword();
                         break;
                     case 3:
+                        if(Login.IsLogged)
+                        {
+                            ToDoScreen.CreateListScreen();
+                        } else 
+                        {
+                            Console.WriteLine("Nao autorizado, realize o login primeiro");
+                        }
+                        
                         break;
                     case 4:
+                        ToDoScreen.ListAllScreen();
                         break;
                     case 5:
+                        ToDoScreen.RemoveList();
                         break;
                     case 6:
+                        ToDoScreen.UpdateList();
                         break;
                     case 7:
+                        ToDoScreen.FinishList();
                         break;
                     case 8:
                         break;
