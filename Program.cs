@@ -1,4 +1,5 @@
-﻿using Todo.Screens;
+﻿using Microsoft.Data.SqlClient;
+using Todo.Screens;
 using ToDo.Screens.ToDoScreens;
 using ToDo.Screens.UserScreens;
 
@@ -6,11 +7,16 @@ namespace ToDo
 {
     public class Program
     {
+        private const string CONNECTION_STRING = @"
+        Server=localhost,1433;Database=Todo;User ID=sa;Password=1q2w3e4r@#$;TrustServerCertificate=True";
+
         static void Main(string[] args)
         {
             var Login = new Login();
             int choice = 0;
 
+            Database.connection = new SqlConnection(CONNECTION_STRING);
+            Database.connection.Open();
             do
             {
                 HomeScreen.Home();
@@ -56,6 +62,7 @@ namespace ToDo
                 }
 
             } while(choice != 8);
+            Database.connection.Close();
         }
     }
 }
