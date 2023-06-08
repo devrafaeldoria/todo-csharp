@@ -3,11 +3,15 @@ namespace ToDo
     public class Login
     {
         private bool logged = false;
-        public bool IsLogged
+
+        public static void IsLogged(bool isValid)
         {
-            get { return logged; }
-            set { logged = value; }
+            logged = isValid;
         }
-        
+
+        public static bool GetLogged()
+        {
+            return logged;
+        }
     }
 }
