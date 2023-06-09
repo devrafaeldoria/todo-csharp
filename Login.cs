@@ -2,7 +2,7 @@ namespace ToDo
 {
     public class Login
     {
-        private bool logged = false;
+        private static bool logged = false;
 
         public static void IsLogged(bool isValid)
         {

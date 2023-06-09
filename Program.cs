@@ -12,7 +12,6 @@ namespace ToDo
 
         static void Main(string[] args)
         {
-            var Login = new Login();
             int choice = 0;
 
             Database.connection = new SqlConnection(CONNECTION_STRING);
@@ -33,7 +32,7 @@ namespace ToDo
                         UserScreen.MatchEmailAndPassword();
                         break;
                     case 3:
-                        if(Login.IsLogged)
+                        if(Login.GetLogged())
                         {
                             ToDoScreen.CreateListScreen();
                         } else 
